@@ -6,18 +6,18 @@ import {
   updateProduct,
   deleteProduct,
 } from '../controllers/Product.controller.js';
-
+import { verifyToken } from '../app.js';
 const router = Router();
 
 // Routes
-router.get('/', getProducts);
+router.get('/',verifyToken, getProducts);
 
-router.post('/', createProduct);
+router.post('/',verifyToken, createProduct);
 
-router.put('/:id', updateProduct);
+router.put('/:id',verifyToken, updateProduct);
 
-router.delete('/:id', deleteProduct);
+router.delete('/:id',verifyToken, deleteProduct);
 
-router.get('/:id', getProduct);
+router.get('/:id',verifyToken, getProduct);
 
 export default router;

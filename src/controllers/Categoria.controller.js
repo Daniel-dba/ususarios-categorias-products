@@ -1,9 +1,10 @@
 import { Categoria } from '../models/Categoria.js';
 
 export async function getCategorias(req, res) {
+  console.log('getCategorias')
   try {
     const Categorias = await Categoria.findAll({
-      attributes: ['id', 'UsuarioId', 'name', ],
+      attributes: ['id', 'usuario_id', 'name', ],
       order: [['id', 'DESC']],
     });
 
@@ -16,10 +17,10 @@ export async function getCategorias(req, res) {
 }
 
 export async function createCategoria(req, res) {
-  const { name, UsuarioId } = req.body;
+  const { name, usuario_id } = req.body;
   try {
     const newCategoria = await Categoria.create({
-      UsuarioId,
+      usuario_id,
       name,
     });
     res.json(newCategoria);
@@ -49,7 +50,7 @@ export async function updateCategoria(req, res) {
 
   try {
     const Categoria = await Categoria.fi({
-      attributes: ['name', 'UsuarioId',  'id'],
+      attributes: ['name', 'usuario_id',  'id'],
       where: { id },
     });
 
@@ -69,7 +70,7 @@ export async function deleteCategoria(req, res) {
   const { id } = req.params;
   try {
     await Categoria.destroy({
-      where: { UsuarioId: id },
+      where: { usuario_id: id },
     });
     return res.sendStatus(204);
   } catch (error) {

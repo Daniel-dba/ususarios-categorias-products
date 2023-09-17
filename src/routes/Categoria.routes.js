@@ -1,23 +1,23 @@
 import { Router } from 'express';
 import {
   getCategorias,
-  createCategoria,
-  getCategoria,
-  updateCategoria,
-  deleteCategoria,
+   createCategoria,
+   getCategoria,
+   updateCategoria,
+   deleteCategoria,
 } from '../controllers/Categoria.controller.js';
-
+import { verifyToken } from '../app.js';
 const router = Router();
 
 // Routes
-router.get('/', getCategorias);
+router.get('/',verifyToken, getCategorias);
 
-router.post('/', createCategoria);
+router.post('/',verifyToken, createCategoria);
 
-router.put('/:id', updateCategoria);
+ router.put('/:id',verifyToken, updateCategoria);
 
-router.delete('/:id', deleteCategoria);
+router.delete('/:id',verifyToken, deleteCategoria);
 
-router.get('/:id', getCategoria);
+ router.get('/:id',verifyToken, getCategoria);
 
 export default router;

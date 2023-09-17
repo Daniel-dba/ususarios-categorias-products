@@ -5,7 +5,7 @@ import { Categoria } from './Categoria.js';
 
 
 export const Product = sequelize.define(
-  'Products',
+  'Product',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ export const Product = sequelize.define(
       autoIncrement: true,
       //autoIncrement: false,
       //defaultValue: () => { }
-      //allowNull: false
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
@@ -34,7 +34,7 @@ export const Product = sequelize.define(
         allowNull: false,
         comment: 'categoria_id del producto',
     },
-    Usuario_id: {
+    usuario_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
          comment: 'categoria_id del producto',
@@ -46,22 +46,22 @@ export const Product = sequelize.define(
   }
 );
 
-Product.hasMany(Usuario, {
-  foreignKey: 'UsuarioId',
-  sourceKey: 'id',
-});
+// Product.hasMany(Usuario, {
+//   foreignKey: 'UsuarioId',
+//   sourceKey: 'id',
+// });
 
-Usuario.belongsTo(Product, {
-  foreignKey: 'UsuarioId',
-  targetKey: 'id',
-});
+// Usuario.belongsTo(Product, {
+//   foreignKey: 'UsuarioId',
+//   targetKey: 'id',
+// });
 
-Product.hasMany(Categoria, {
-  foreignKey: 'UsuarioId',
-  sourceKey: 'id',
-});
+// Product.hasMany(Categoria, {
+//   foreignKey: 'UsuarioId',
+//   sourceKey: 'id',
+// });
 
-Categoria.belongsTo(Product, {
-  foreignKey: 'UsuarioId',
-  targetKey: 'id',
-});
+// Categoria.belongsTo(Product, {
+//   foreignKey: 'UsuarioId',
+//   targetKey: 'id',
+// });
